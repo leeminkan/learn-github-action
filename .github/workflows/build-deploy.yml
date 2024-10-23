@@ -1,0 +1,40 @@
+name: Build and Deploy NestJS App
+run-name: ${{ github.actor }} is Build and Deploy NestJS App
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
+      - name: Build the app
+        run: npm run build
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
+      - name: Run tests
+        run: npm run test
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
+      - name: Deploy
+        run: |
+          echo "ENV variable ${{ NODE_ENV  }}"
+          echo "ENV secret ${{ NODE_SECRET  }}"
+          echo "Deploy ${{ GITHUB_SHA  }}"
