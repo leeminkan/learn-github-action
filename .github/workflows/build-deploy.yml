@@ -7,11 +7,11 @@ on:
 
 env:
   DAY_OF_WEEK: Monday
-  # Set default environment to avoid potential errors
   ENVIRONMENT: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
 
 jobs:
   build:
+    name: "Build"
     runs-on: ubuntu-latest
     environment: ${{ env.ENVIRONMENT }}
 
@@ -23,6 +23,7 @@ jobs:
         run: npm run build
 
   deploy:
+    name: "Deploy"
     runs-on: ubuntu-latest
     environment: ${{ env.ENVIRONMENT }}
 
