@@ -3,15 +3,17 @@ run-name: ${{ github.actor }} is Build and Deploy NestJS App
 
 on:
   push:
-    branches: [main]
+    branches: [main, develop]
 
 env:
   DAY_OF_WEEK: Monday
+  # Set default environment to avoid potential errors
+  ENVIRONMENT: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: production
+    environment: ${{ env.ENVIRONMENT }}
 
     steps:
       - uses: actions/checkout@v3
@@ -22,7 +24,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    environment: production
+    environment: ${{ env.ENVIRONMENT }}
 
     steps:
       - uses: actions/checkout@v3
