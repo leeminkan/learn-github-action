@@ -14,7 +14,7 @@ jobs:
     with:
       env_input: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
     secrets:
-      NODE_SECRET: test
+      node_secret: ${{ secrets.NODE_SECRET }}
 
   build:
     name: "Build"
