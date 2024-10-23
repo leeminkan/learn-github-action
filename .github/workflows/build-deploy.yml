@@ -27,6 +27,6 @@ jobs:
         run: npm install
       - name: Deploy
         run: |
-          echo "ENV variable ${{ NODE_ENV  }}"
-          echo "ENV secret ${{ NODE_SECRET  }}"
+          echo "ENV variable ${{ env.NODE_ENV  }}"
+          echo "ENV secret ${{ env.NODE_SECRET  }}"
           echo "Deploy ${{ GITHUB_SHA  }}"
