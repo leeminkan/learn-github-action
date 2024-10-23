@@ -13,7 +13,7 @@ jobs:
   build:
     name: "Build"
     runs-on: ubuntu-latest
-    environment: $env.ENVIRONMENT
+    environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
 
     steps:
       - uses: actions/checkout@v3
@@ -32,7 +32,7 @@ jobs:
   deploy:
     name: "Deploy"
     runs-on: ubuntu-latest
-    environment: $env.ENVIRONMENT
+    environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
 
     steps:
       - uses: actions/checkout@v3
