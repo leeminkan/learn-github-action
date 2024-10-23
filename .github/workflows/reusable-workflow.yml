@@ -11,7 +11,7 @@ jobs:
   reusable_workflow_job:
     runs-on: ubuntu-latest
     steps:
-      - name: Build
+      - name: reusable_workflow_job
         run: |
           echo "token is ${{ secrets.NODE_SECRET }}!"
           echo "env_input is ${{ inputs.env_input }}!"
