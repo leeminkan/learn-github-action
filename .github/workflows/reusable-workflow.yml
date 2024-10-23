@@ -5,7 +5,7 @@ on:
         required: true
         type: string
     secrets:
-      secret_input:
+      NODE_SECRET:
         required: true
 jobs:
   reusable_workflow_job:
@@ -13,5 +13,5 @@ jobs:
     steps:
       - name: Build
         run: |
-          echo "token is ${{ secrets.secret_input }}!"
+          echo "token is ${{ secrets.NODE_SECRET }}!"
           echo "env_input is ${{ inputs.env_input }}!"

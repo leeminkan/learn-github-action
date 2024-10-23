@@ -13,8 +13,7 @@ jobs:
     uses: ./.github/workflows/reusable-workflow.yml
     with:
       env_input: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
-    secrets:
-      secret_input: ${{ vars.NODE_ENV }}
+    secrets: inherit
 
   build:
     name: "Build"
