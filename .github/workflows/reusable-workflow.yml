@@ -10,6 +10,7 @@ on:
 jobs:
   reusable_workflow_job:
     runs-on: ubuntu-latest
+    environment: ${{ inputs.env_input }}
     steps:
       - name: reusable_workflow_job
         run: |
