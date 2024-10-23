@@ -5,6 +5,9 @@ on:
   push:
     branches: [main]
 
+env:
+  DAY_OF_WEEK: Monday
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,6 +30,7 @@ jobs:
         run: npm install
       - name: Deploy
         run: |
-          echo "ENV variable ${{ env.NODE_ENV  }}"
-          echo "ENV secret ${{ env.NODE_SECRET  }}"
-          echo "Deploy ${{ github.event.inputs.commit_sha }}"
+          echo "Today is ${{ env.DAY_OF_WEEK }}!"
+          echo "ENV variable ${{ vars.NODE_ENV  }}"
+          echo "ENV secret ${{ secrets.NODE_SECRET  }}"
+          echo "Deploy ${{ GITHUB_SHA }}"
