@@ -12,7 +12,7 @@ jobs:
   call-workflow-passing-data:
     uses: ./.github/workflows/reusable-workflow.yml
     with:
-      env_input: ${{ env.ENVIRONMENT }}
+      env_input: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
     secrets:
       secret_input: ${{ vars.NODE_ENV }}
 
