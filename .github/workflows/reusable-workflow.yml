@@ -1,0 +1,17 @@
+on:
+  workflow_call:
+    inputs:
+      env_input:
+        required: true
+        type: string
+    secrets:
+      secret_input:
+        required: true
+jobs:
+  reusable_workflow_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build
+        run: |
+          echo "token is ${{ secrets.secret_input }}!"
+          echo "env_input is ${{ inputs.env_input }}!"
